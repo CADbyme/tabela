@@ -14,6 +14,21 @@ var operation = [];
 init();
 
 function init(){
+
+    function setCheckboxBasedOnSystemPreference() {
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        if (prefersDarkScheme.matches) {
+            checkbox.checked = true;
+            document.body.classList.add("dark-mode");
+        } else {
+            checkbox.checked = false;
+            document.body.classList.remove("dark-mode");
+        }
+    }
+    
+    
+    setCheckboxBasedOnSystemPreference();
+    
     checkbox.addEventListener("change", function() {
         if (this.checked) {
             document.body.classList.add("dark-mode");
